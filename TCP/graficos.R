@@ -13,10 +13,9 @@ qtd_por_tipo$mes <- factor(qtd_por_tipo$mes,
                 levels = c("maio", "agosto", "novembro"))
 
 qtd_por_tipo %>% 
-  ggplot(aes(x = mes, y = proportion, fill=fct_reorder(tipo_trabalho,-proportion))) + 
+  ggplot(aes(x = mes, y = total, fill=fct_reorder(tipo_trabalho,-proportion))) + 
   geom_col(position = "dodge") + theme_minimal() + xlab("Mês") + ylab("Proporções") +
-  scale_y_continuous(breaks = seq(0, 0.6, 0.05)) + 
-  geom_text(aes(label = round(proportion,2)), position = position_dodge(width = 0.9),
+  geom_text(aes(label = round(total)), position = position_dodge(width = 0.9),
             vjust = -0.5) + guides(fill=guide_legend("Tipo de trabalho")) + 
   ggtitle("Proporções por tipo de trabalho","Fonte: PNAD-Covid dos meses de Maio, Agosto e Novembro")
 
